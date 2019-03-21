@@ -1,0 +1,294 @@
+{  
+   "Template_Name":"Basic",
+   "Template_Description":"Default Hyperledger Fabric Network",
+   "NetworkInfo":{  
+      "name":"mynetwork",
+      "fabricversion":"1.4",
+      "purpose":"poc",
+      "domain":"poc",
+      "type":"singlehost",
+      "os":"ubuntu",
+      "host":"localhost",
+      "volumepath":"\\opt\\chainops\\",
+      "status":"DEFINED",
+      "hide_add_org":true,
+      "hide_add_peer":true,
+      "hide_add_orderer":true,
+      "orgs":[  
+         {  
+            "name":"orgone",
+            "host":"",
+            "os":"",
+            "peers":[  
+               {  
+                  "id":0,
+                  "name":"peerone",
+                  "operator":true,
+                  "reader":true,
+                  "writer":true,
+                  "peer_port":7051,
+                  "eventhub_port":7053,
+                  "statedb_type":"couchdb",
+                  "statedb_name":"couchdborgone",
+                  "statedb_port":5984
+               }
+            ],
+            "org_ca":{  
+               "dbtype":"sqlite",
+               "alg":"ecdsa-with-SHA256",
+               "mode":"single",
+               "name":"caorgone",
+               "port":8054,
+               "username":"admin",
+               "password":"adminpw"
+            }
+         }
+      ],
+      "channels":[  
+         {  
+            "name":"allorgschannel",
+            "orgs":[  
+               "orgone"
+            ]
+         }
+      ],
+      "orderer":{  
+         "type":"solo",
+         "details":[  
+            {  
+               "name":"ordererone",
+               "public":true,
+               "ordererport":7050,
+               "zookeeperport":2181,
+               "kafkaport":9092
+            }
+         ]
+      },
+      "CA":{  
+         "dbtype":"sqlite",
+         "alg":"ecdsa-with-SHA256",
+         "mode":"single",
+         "name":"caroot",
+         "port":7054,
+         "username":"admin",
+         "password":"adminpw"
+      }
+   },
+   "NetworkUI":{  
+      "f1":{  
+         "help":"Specify the Network Name that you already created in your host machine.Eg: docker network create --attachable --driver overlay my_network",
+         "readonly":false,
+         "hide":false
+      },
+      "f2":{  
+         "help":"Specify the fabric version. By Default it takes fabric latest version.",
+         "readonly":true,
+         "hide":false
+      },
+      "f3":{  
+         "help":"Specify the purpose of this Blockchain Network.",
+         "readonly":false,
+         "hide":false
+      },
+      "f4":{  
+         "help":"Specify the domain name. eg:Inusrance,Banking,Supply chain...or POC",
+         "readonly":false,
+         "hide":false
+      },
+      "f5":{  
+         "help":"Network type single or multi host environment.",
+         "readonly":false,
+         "hide":false
+      },
+      "f6":{  
+         "help":"Specify the operating system name.",
+         "readonly":false,
+         "hide":false
+      },
+      "f7":{  
+         "help":"Specify the Host Machine IP that you are going to create your blockchain network.",
+         "readonly":false,
+         "hide":false
+      },
+      "f8":{  
+         "help":"Network Status",
+         "readonly":true,
+         "hide":true
+      },
+      "f9":{  
+         "help":"Specify the Organization name.",
+         "readonly":false,
+         "hide":false
+      },
+      "f10":{  
+         "help":"Organization Host IP Address.",
+         "readonly":true,
+         "hide":true
+      },
+      "f11":{  
+         "help":"Operating system.",
+         "readonly":true,
+         "hide":true
+      },
+      "f12":{  
+         "help":"Specify the Volume Path.Eg: if Linux: /opt/path, if Windows: //D:/path, if Mac: /home/path.",
+         "readonly":false,
+         "hide":false
+      },
+      "f13":{  
+         "help":"The Peer ID.",
+         "readonly":true,
+         "hide":true
+      },
+      "f14":{  
+         "help":"Peer Name.",
+         "readonly":false,
+         "hide":false
+      },
+      "f15":{  
+         "help":"Choose this Peer is Operator or not",
+         "readonly":false,
+         "hide":false
+      },
+      "f16":{  
+         "help":"Choose this Peer is reader or not",
+         "readonly":false,
+         "hide":false
+      },
+      "f17":{  
+         "help":"Choose this Peer is writer or not",
+         "readonly":false,
+         "hide":false
+      },
+      "f18":{  
+         "help":"Specify the Peer Port.Make sure this port is available in your host machine.",
+         "readonly":false,
+         "hide":false
+      },
+      "f19":{  
+         "help":"Specify the Peer EventHub Port.Make sure this port is available in your host machine.",
+         "readonly":false,
+         "hide":false
+      },
+      "f20":{  
+         "help":"Specify the Channel Name for your Blockchian Network. Channel Name should be lowercase letters. Don't use numbers or special characters.",
+         "readonly":false,
+         "hide":false
+      },
+      "f21":{  
+         "help":"Channel Organization name.",
+         "readonly":true,
+         "hide":false
+      },
+      "f22":{  
+         "help":"Specify the Orderer Type.",
+         "readonly":true,
+         "hide":false
+      },
+      "f23":{  
+         "help":"Orderer Name.",
+         "readonly":false,
+         "hide":false
+      },
+      "f24":{  
+         "help":"Specify the Orderer Port.Make sure this port is available in your host machine.",
+         "readonly":false,
+         "hide":false
+      },
+      "f25":{  
+         "help":"Specify the Zookeeper Port.Make sure this port is available in your host machine.",
+         "readonly":true,
+         "hide":true
+      },
+      "f26":{  
+         "help":"Specify the kafka Port.Make sure this port is available in your host machine.",
+         "readonly":true,
+         "hide":true
+      },
+      "f27":{  
+         "help":"Choose Root CA DB Type. By default It takes Sqlite.",
+         "readonly":true,
+         "hide":false
+      },
+      "f28":{  
+         "help":"Specify Root CA ALgorithm that used to generate certificates.",
+         "readonly":true,
+         "hide":false
+      },
+      "f29":{  
+         "help":"Specify the Root CA Type.Single or Clustering CA.",
+         "readonly":true,
+         "hide":false
+      },
+      "f30":{  
+         "help":"Root Ca Name",
+         "readonly":false,
+         "hide":false
+      },
+      "f31":{  
+         "help":"Specify the Root CA Port.Make sure this port is available in your host machine.",
+         "readonly":false,
+         "hide":false
+      },
+      "f32":{  
+         "help":"Choose State Database Type.By default it takes couchdb.",
+         "readonly":true,
+         "hide":false
+      },
+      "f33":{  
+         "help":"State Database Name.",
+         "readonly":false,
+         "hide":false
+      },
+      "f34":{  
+         "help":"Specify the State Database Port.Make sure this port is available in your host machine.",
+         "readonly":false,
+         "hide":false
+      },
+      "f35":{  
+         "help":"Specify the Root CA Username.",
+         "readonly":false,
+         "hide":false
+      },
+      "f36":{  
+         "help":"Specify the Root CA Password.",
+         "readonly":false,
+         "hide":false
+      },
+      "f37":{  
+         "help":"Choose Organization Intermediate CA DB Type. By default It takes Sqlite.",
+         "readonly":true,
+         "hide":false
+      },
+      "f38":{  
+         "help":"Specify Organization Intermediate CA ALgorithm that used to generate certificates.",
+         "readonly":true,
+         "hide":false
+      },
+      "f39":{  
+         "help":"Specify the Organization Intermediate CA Type.Single or Clustering CA.",
+         "readonly":false,
+         "hide":false
+      },
+      "f40":{  
+         "help":"Organization Intermediate Ca Name",
+         "readonly":false,
+         "hide":false
+      },
+      "f41":{  
+         "help":"Specify the Organization Intermediate CA Port.Make sure this port is available in your host machine.",
+         "readonly":false,
+         "hide":false
+      },
+      "f42":{  
+         "help":"Specify the Organization Intermediate CA Username.",
+         "readonly":false,
+         "hide":false
+      },
+      "f43":{  
+         "help":"Specify the Organization Intermediate CA Password.",
+         "readonly":false,
+         "hide":false
+      }
+   }
+}
